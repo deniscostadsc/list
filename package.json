@@ -1,0 +1,16 @@
+{
+  "name": "list",
+  "version": "0.0.1",
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*",
+    "sinon": "*",
+    "grunt": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-docco": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive spec/"
+  }
+}
