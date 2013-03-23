@@ -143,10 +143,13 @@
   // list#first
   // ------------------------------------------------------
   //
-  // Return the first list item.
+  // Return the list's first item.
   //
-  //   list([1,2,3]).first();
-  //   //=> 1
+  //     list([1,2,3]).first();
+  //     //=> 1
+  //
+  //     list([1,2,3]).first(2);
+  //     //=> [1,2]
   //
   list.fn.first = function(quantity) {
     return quantity ? this.slice(0, quantity) : this.items[0];
@@ -155,10 +158,13 @@
   // list#last
   // ------------------------------------------------------
   //
-  // Return the first list item.
+  // Return the list's last item.
   //
-  //   list([1,2,3]).last();
-  //   //=> 3
+  //     list([1,2,3]).last();
+  //     //=> 3
+  //
+  //     list([1,2,3]).last(2);
+  //     //=> [2,3]
   //
   list.fn.last = function(quantity) {
     return quantity ? this.slice(-quantity) : this.items[this.length - 1];

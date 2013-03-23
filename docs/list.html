@@ -96,17 +96,25 @@
     <span class="p">});</span>
   <span class="p">};</span></pre></div>             </td>           </tr>                               <tr id="section-13">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-13">&#182;</a>               </div>               <h2>list#first</h2>
 
-<p>Return the first list item.</p>
+<p>Return the list's first item.</p>
 
-<p>list([1,2,3]).first();
-  //=> 1</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">list</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">first</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
+<pre><code>list([1,2,3]).first();
+//=&gt; 1
+
+list([1,2,3]).first(2);
+//=&gt; [1,2]
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">list</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">first</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">quantity</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">quantity</span><span class="p">)</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
   <span class="p">};</span></pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <h2>list#last</h2>
 
-<p>Return the first list item.</p>
+<p>Return the list's last item.</p>
 
-<p>list([1,2,3]).last();
-  //=> 3</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">list</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
+<pre><code>list([1,2,3]).last();
+//=&gt; 3
+
+list([1,2,3]).last(2);
+//=&gt; [2,3]
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">list</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">quantity</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="nx">quantity</span><span class="p">)</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
   <span class="p">};</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <h2>list#slice</h2>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">list</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">ending</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">list</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">ending</span><span class="p">));</span>
