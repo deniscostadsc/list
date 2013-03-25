@@ -482,6 +482,15 @@
     });
   };
 
+  // List#clear
+  // ------------------------------------------------------
+  //
+  List.fn.clear = function() {
+    this.items.length = 0;
+    this.length = 0;
+    return this;
+  };
+
   // Expose the list function to the world!
   context.List = List;
 })(typeof(exports) === "undefined" ? this : exports);
