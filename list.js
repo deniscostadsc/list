@@ -467,6 +467,21 @@
     }
   };
 
+  // List#where
+  // ------------------------------------------------------
+  //
+  List.fn.where = function(conditions) {
+    return this.select(function(item){
+      for (var name in conditions) {
+        if (conditions[name] !== item[name]) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+  };
+
   // Expose the list function to the world!
   context.List = List;
 })(typeof(exports) === "undefined" ? this : exports);
