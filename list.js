@@ -155,7 +155,7 @@
   //     //=> 1
   //
   //     List([1,2,3]).first(2);
-  //     //=> [1,2]
+  //     //=> List([1,2])
   //
   List.fn.first = function(quantity) {
     return quantity ? this.slice(0, quantity) : this.items[0];
@@ -170,7 +170,7 @@
   //     //=> 3
   //
   //     List([1,2,3]).last(2);
-  //     //=> [2,3]
+  //     //=> List([2,3])
   //
   List.fn.last = function(quantity) {
     return quantity ? this.slice(-quantity) : this.items[this.length - 1];
@@ -178,7 +178,6 @@
 
   // List#slice
   // ------------------------------------------------------
-  //
   //
   List.fn.slice = function(index, ending) {
     return new List(this.items.slice(index, ending));
@@ -417,10 +416,10 @@
   //     //=> 3
   //
   //     List([1,2,3]).sample(1);
-  //     //=> [3]
+  //     //=> List([3])
   //
   //     List([1,2,3]).sample(2);
-  //     //=> [1,3]
+  //     //=> List([1,3])
   //
   List.fn.sample = function(quantity) {
     var shuffle = this.shuffle();

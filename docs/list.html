@@ -109,7 +109,7 @@ var list = new List([1,2,3,4]);
 //=&gt; 1
 
 List([1,2,3]).first(2);
-//=&gt; [1,2]
+//=&gt; List([1,2])
 </code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">List</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">first</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">quantity</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">quantity</span><span class="p">)</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
   <span class="p">};</span></pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <h2>List#last</h2>
@@ -120,7 +120,7 @@ List([1,2,3]).first(2);
 //=&gt; 3
 
 List([1,2,3]).last(2);
-//=&gt; [2,3]
+//=&gt; List([2,3])
 </code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">List</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">quantity</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="nx">quantity</span><span class="p">)</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
   <span class="p">};</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <h2>List#slice</h2>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">List</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">ending</span><span class="p">)</span> <span class="p">{</span>
@@ -272,10 +272,10 @@ List([1,2,3]).last(2);
 //=&gt; 3
 
 List([1,2,3]).sample(1);
-//=&gt; [3]
+//=&gt; List([3])
 
 List([1,2,3]).sample(2);
-//=&gt; [1,3]
+//=&gt; List([1,3])
 </code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">List</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">sample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">quantity</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">shuffle</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">shuffle</span><span class="p">();</span>
 
