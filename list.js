@@ -491,6 +491,21 @@
     return this;
   };
 
+  // List#get
+  // ------------------------------------------------------
+  //
+  List.fn.get = function(index) {
+    return this.items[index];
+  };
+
+  // List#set
+  // ------------------------------------------------------
+  //
+  List.fn.set = function(index, value) {
+    this.items[index] = value;
+    return this;
+  };
+
   // Expose the list function to the world!
   context.List = List;
 })(typeof(exports) === "undefined" ? this : exports);
