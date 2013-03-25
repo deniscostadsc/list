@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#all", function() {
+describe("List#all", function() {
   it("detects all items", function() {
-    var result = list([1,2,3,4]).all(function(number){
+    var result = List([1,2,3,4]).all(function(number){
       return number > 0;
     });
 
@@ -12,7 +12,7 @@ describe("list#all", function() {
   });
 
   it("doesn't detect all items", function() {
-    var result = list([1,2,3,4,5]).all(function(number){
+    var result = List([1,2,3,4,5]).all(function(number){
       return number < 5;
     });
 
@@ -20,6 +20,6 @@ describe("list#all", function() {
   });
 
   it("defines alias", function() {
-    expect(list.fn.filter).to.eql(list.fn.reject);
+    expect(List.fn.filter).to.eql(List.fn.reject);
   });
 });

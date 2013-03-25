@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#fill", function() {
+describe("List#fill", function() {
   it("fills items", function() {
-    var result = list().fill(3, "*");
+    var result = List().fill(3, "*");
 
     expect(result.items).to.eql(["*", "*", "*"]);
   });

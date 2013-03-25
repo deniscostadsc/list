@@ -1,9 +1,9 @@
 var expect = require("expect.js")
   , sinon = require("sinon")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#each", function() {
+describe("List#each", function() {
   var callback;
 
   beforeEach(function() {
@@ -11,7 +11,7 @@ describe("list#each", function() {
   });
 
   it("iterates each items", function() {
-    var sum = list(["a", "b", "c"]).each(callback);
+    var sum = List(["a", "b", "c"]).each(callback);
 
     expect(callback.args[0]).to.eql(["a", 0]);
     expect(callback.args[1]).to.eql(["b", 1]);
@@ -19,7 +19,7 @@ describe("list#each", function() {
   });
 
   it("returns self", function() {
-    var numbers = list([1,2,3]);
+    var numbers = List([1,2,3]);
     var result = numbers.each(callback)
 
     expect(result).to.eql(numbers);

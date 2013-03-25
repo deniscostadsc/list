@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#map", function() {
+describe("List#map", function() {
   it("returns mapped list", function() {
-    var result = list([1,2,3]).map(function(number, index){
+    var result = List([1,2,3]).map(function(number, index){
       return [index, number];
     });
 
@@ -12,7 +12,7 @@ describe("list#map", function() {
   });
 
   it("returns mapped list from attribute", function() {
-    var result = list([{name: "john"}, {name: "mary"}]).map("name");
+    var result = List([{name: "john"}, {name: "mary"}]).map("name");
     expect(result.items).to.eql(["john", "mary"]);
   });
 
@@ -21,7 +21,7 @@ describe("list#map", function() {
         {name: function(){ return "john"; }}
       , {name: function(){ return "mary"; }}
     ];
-    var result = list(users).map("name");
+    var result = List(users).map("name");
     expect(result.items).to.eql(["john", "mary"]);
   });
 });

@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#reject", function() {
+describe("List#reject", function() {
   it("filters out based on criteria", function() {
-    var result = list([1,2,3,4]).reject(function(number){
+    var result = List([1,2,3,4]).reject(function(number){
       return number % 2 == 1;
     });
 
@@ -12,6 +12,6 @@ describe("list#reject", function() {
   });
 
   it("defines alias", function() {
-    expect(list.fn.filter).to.eql(list.fn.reject);
+    expect(List.fn.filter).to.eql(List.fn.reject);
   });
 });

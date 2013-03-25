@@ -1,15 +1,15 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#sort", function() {
+describe("List#sort", function() {
   it("sorts items", function() {
-    var result = list([3,2,1]).sort();
+    var result = List([3,2,1]).sort();
     expect(result.items).to.eql([1,2,3]);
   });
 
   it("sorts items by attribute", function() {
-    var users = list([
+    var users = List([
       {name: "paul"},
       {name: "mary"},
       {name: "john"}
@@ -23,7 +23,7 @@ describe("list#sort", function() {
   });
 
   it("sorts items by function", function() {
-    var result = list([1,2,3,4,5,6]).sort(function(left, right){
+    var result = List([1,2,3,4,5,6]).sort(function(left, right){
       if (left % 2 == 1 && right % 2 == 1) { return left > right ? 1 : -1; }
       if (left % 2 == 0 && right % 2 == 0) { return left > right ? 1 : -1; }
       if (left % 2 == 1) { return -1; }

@@ -4,12 +4,12 @@
   //
   // The list.js library allows you to work os lists, with chainable functions.
   //
-  function list(items) {
+  function List(items) {
     var self = this;
     items = items || [];
 
-    if (self instanceof list === false) {
-      self = new list(items);
+    if (self instanceof List === false) {
+      self = new List(items);
     }
 
     self.items = items;
@@ -18,7 +18,7 @@
     return self;
   }
 
-  list.fn = list.prototype;
+  List.fn = List.prototype;
 
   // Proxies the specified function to the target.
   var proxy = function(target, func, args) {
@@ -40,8 +40,8 @@
 
   // Map lists, returning the items.
   var mapLists = function(collection) {
-    return list(collection).map(function(item){
-      return item instanceof list ? item.items : item;
+    return List(collection).map(function(item){
+      return item instanceof List ? item.items : item;
     }).items;
   };
 
@@ -58,11 +58,11 @@
     return left.index < right.index ? -1 : 1;
   };
 
-  // list#uniq
+  // List#uniq
   // ------------------------------------------------------
   //
-  list.fn.uniq = function(criteria) {
-    var seen = list([]);
+  List.fn.uniq = function(criteria) {
+    var seen = List();
 
     if (!criteria) {
       criteria = function(item) {
@@ -82,12 +82,12 @@
     });
   };
 
-  list.fn.unique = list.fn.uniq;
+  List.fn.unique = List.fn.uniq;
 
-  // list#includes
+  // List#includes
   // ------------------------------------------------------
   //
-  list.fn.includes = function(item) {
+  List.fn.includes = function(item) {
     if (this.items.indexOf) {
       return this.items.indexOf(item) != -1;
     }
@@ -97,30 +97,30 @@
     });
   };
 
-  list.fn.contains = list.fn.includes;
+  List.fn.contains = List.fn.includes;
 
-  // list#any
+  // List#any
   // ------------------------------------------------------
   //
-  list.fn.any = function(criteria) {
+  List.fn.any = function(criteria) {
     return this.select(criteria).length > 0;
   };
 
-  list.fn.some = list.fn.any;
+  List.fn.some = List.fn.any;
 
-  // list#all
+  // List#all
   // ------------------------------------------------------
   //
-  list.fn.all = function(criteria) {
+  List.fn.all = function(criteria) {
     return this.select(criteria).length === this.length;
   };
 
-  list.fn.every = list.fn.all;
+  List.fn.every = List.fn.all;
 
-  // list#countBy
+  // List#countBy
   // ------------------------------------------------------
   //
-  list.fn.countBy = function(criteria) {
+  List.fn.countBy = function(criteria) {
     var attr;
 
     if (typeof(criteria) != "function") {
@@ -140,71 +140,71 @@
     });
   };
 
-  // list#first
+  // List#first
   // ------------------------------------------------------
   //
   // Return the list's first item.
   //
-  //     list([1,2,3]).first();
+  //     List([1,2,3]).first();
   //     //=> 1
   //
-  //     list([1,2,3]).first(2);
+  //     List([1,2,3]).first(2);
   //     //=> [1,2]
   //
-  list.fn.first = function(quantity) {
+  List.fn.first = function(quantity) {
     return quantity ? this.slice(0, quantity) : this.items[0];
   };
 
-  // list#last
+  // List#last
   // ------------------------------------------------------
   //
   // Return the list's last item.
   //
-  //     list([1,2,3]).last();
+  //     List([1,2,3]).last();
   //     //=> 3
   //
-  //     list([1,2,3]).last(2);
+  //     List([1,2,3]).last(2);
   //     //=> [2,3]
   //
-  list.fn.last = function(quantity) {
+  List.fn.last = function(quantity) {
     return quantity ? this.slice(-quantity) : this.items[this.length - 1];
   };
 
-  // list#slice
+  // List#slice
   // ------------------------------------------------------
   //
   //
-  list.fn.slice = function(index, ending) {
-    return list(this.items.slice(index, ending));
+  List.fn.slice = function(index, ending) {
+    return List(this.items.slice(index, ending));
   };
 
-  // list#compact
+  // List#compact
   // ------------------------------------------------------
   //
   // Filter out `null` or `undefined` elements.
   //
-  list.fn.compact = function() {
+  List.fn.compact = function() {
     return this.reject(function(item){
       return item === undefined || item === null;
     });
   };
 
-  // list#reject
+  // List#reject
   // ------------------------------------------------------
   //
-  list.fn.reject = function(criteria) {
+  List.fn.reject = function(criteria) {
     return this.select(function(item, index){
       return !criteria(item, index);
     });
   };
 
-  list.fn.filter = list.fn.reject;
+  List.fn.filter = List.fn.reject;
 
-  // list#select
+  // List#select
   // ------------------------------------------------------
   //
-  list.fn.select = function(criteria) {
-    return this.reduce(list([]), function(buffer, item, index){
+  List.fn.select = function(criteria) {
+    return this.reduce(List(), function(buffer, item, index){
       if (criteria(item, index)) {
         buffer.push(item);
       }
@@ -213,10 +213,10 @@
     });
   };
 
-  // list#reduce
+  // List#reduce
   // ------------------------------------------------------
   //
-  list.fn.reduce = function(buffer, iterator) {
+  List.fn.reduce = function(buffer, iterator) {
     var collection = this;
 
     if (typeof(buffer) == "function") {
@@ -232,10 +232,10 @@
     return buffer;
   };
 
-  // list#each
+  // List#each
   // ------------------------------------------------------
   //
-  list.fn.each = function(iterator) {
+  List.fn.each = function(iterator) {
     for (var index = 0; index < this.length; index++) {
       iterator(this.items[index], index);
     }
@@ -243,10 +243,10 @@
     return this;
   };
 
-  // list#map
+  // List#map
   // ------------------------------------------------------
   //
-  list.fn.map = function(iterator) {
+  List.fn.map = function(iterator) {
     var attr;
 
     if (typeof(iterator) != "function") {
@@ -256,59 +256,59 @@
       };
     }
 
-    return this.reduce(list([]), function(buffer, item, index){
+    return this.reduce(List(), function(buffer, item, index){
       buffer.push(iterator(item, index));
       return buffer;
     });
   };
 
-  // list#concat
+  // List#concat
   // ------------------------------------------------------
   //
-  list.fn.concat = function() {
+  List.fn.concat = function() {
     this.items = this.items.concat.apply(this.items, mapLists(arguments));
     this.length = this.items.length;
     return this;
   };
 
-  // list#push
+  // List#push
   // ------------------------------------------------------
   //
-  list.fn.push = function() {
+  List.fn.push = function() {
     return stack(this, "push", arguments);
   };
 
-  // list#pop
+  // List#pop
   // ------------------------------------------------------
   //
-  list.fn.pop = function() {
+  List.fn.pop = function() {
     return stack(this, "pop", arguments);
   };
 
-  // list#unshift
+  // List#unshift
   // ------------------------------------------------------
   //
-  list.fn.unshift = function() {
+  List.fn.unshift = function() {
     return stack(this, "unshift", arguments);
   };
 
-  // list#shift
+  // List#shift
   // ------------------------------------------------------
   //
-  list.fn.shift = function() {
+  List.fn.shift = function() {
     return stack(this, "shift", arguments);
   };
 
-  // list#sort
+  // List#sort
   // ------------------------------------------------------
   //
-  list.fn.sort = function(sorter) {
+  List.fn.sort = function(sorter) {
     var sortable;
 
     if (sorter === undefined) {
-      return list(this.items.sort());
+      return List(this.items.sort());
     } else if (typeof(sorter) == "function") {
-      return list(this.items.sort(sorter));
+      return List(this.items.sort(sorter));
     }
 
     sortable = this.map(function(item, index){
@@ -320,20 +320,20 @@
     return sortable.map("item");
   };
 
-  // list#reverse
+  // List#reverse
   // ------------------------------------------------------
   //
-  list.fn.reverse = function() {
-    return this.reduce(list([]), function(buffer, item){
+  List.fn.reverse = function() {
+    return this.reduce(List(), function(buffer, item){
       buffer.unshift(item);
       return buffer;
     });
   };
 
-  // list#groupBy
+  // List#groupBy
   // ------------------------------------------------------
   //
-  list.fn.groupBy = function(criteria) {
+  List.fn.groupBy = function(criteria) {
     var attr;
 
     if (typeof(criteria) != "function") {
@@ -346,25 +346,25 @@
 
     return this.reduce({}, function(buffer, item, index){
       var key = criteria(item, index);
-      buffer[key] = buffer[key] || list([]);
+      buffer[key] = buffer[key] || List();
       buffer[key].push(item);
 
       return buffer;
     });
   };
 
-  // list#groupsOf
+  // List#groupsOf
   // ------------------------------------------------------
   //
-  list.fn.groupsOf = function(number, fill) {
+  List.fn.groupsOf = function(number, fill) {
     var index = 0
-      , result = list([])
+      , result = List()
       , fillItems = []
       , slice
     ;
 
     if (fill !== undefined) {
-      fillItems = list().fill(number, fill);
+      fillItems = List().fill(number, fill);
     }
 
     while (index < this.length) {
@@ -376,21 +376,21 @@
     return result;
   };
 
-  // list#fill
+  // List#fill
   // ------------------------------------------------------
   //
-  list.fn.fill = function(number, fill) {
-    return list(Array(number)).map(function(){
+  List.fn.fill = function(number, fill) {
+    return List(Array(number)).map(function(){
       return fill;
     });
   };
 
-  // list#shuffle
+  // List#shuffle
   // ------------------------------------------------------
   //
   // Shuffle the array using the [Fisher-Yates](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle#The_modern_algorithm) algorithm.
   //
-  list.fn.shuffle = function() {
+  List.fn.shuffle = function() {
     var index, temp;
     var shuffle = this.slice();
 
@@ -404,10 +404,19 @@
     return shuffle;
   };
 
-  // list#sample
+  // List#sample
   // ------------------------------------------------------
   //
-  list.fn.sample = function(quantity) {
+  //     List([1,2,3]).sample();
+  //     //=> 3
+  //
+  //     List([1,2,3]).sample(1);
+  //     //=> [3]
+  //
+  //     List([1,2,3]).sample(2);
+  //     //=> [1,3]
+  //
+  List.fn.sample = function(quantity) {
     var shuffle = this.shuffle();
 
     if (!quantity) {
@@ -418,5 +427,5 @@
   };
 
   // Expose the list function to the world!
-  context.list = list;
+  context.List = List;
 })(typeof(exports) === "undefined" ? this : exports);

@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#uniq", function() {
+describe("List#uniq", function() {
   it("returns unique items", function() {
-    var result = list([1,2,1,1,2,3]).uniq();
+    var result = List([1,2,1,1,2,3]).uniq();
     expect(result.items).to.eql([1,2,3]);
   });
 
@@ -16,7 +16,7 @@ describe("list#uniq", function() {
       , {name: "john", id: 4}
     ];
 
-    var result = list(people).uniq(function(person){
+    var result = List(people).uniq(function(person){
       return person.name;
     });
 
@@ -24,6 +24,6 @@ describe("list#uniq", function() {
   });
 
   it("defines alias", function() {
-    expect(list.fn.unique).to.eql(list.fn.uniq);
+    expect(List.fn.unique).to.eql(List.fn.uniq);
   });
 });

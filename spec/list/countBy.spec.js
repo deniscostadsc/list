@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#countBy", function() {
+describe("List#countBy", function() {
   it("counts items by function", function() {
-    var result = list([1,2,3,4,5]).countBy(function(number){
+    var result = List([1,2,3,4,5]).countBy(function(number){
       return number % 2 == 0 ? "even" : "odd";
     });
 
@@ -21,7 +21,7 @@ describe("list#countBy", function() {
       , {tag: "ruby"}
     ];
 
-    var result = list(tags).countBy("tag");
+    var result = List(tags).countBy("tag");
 
     expect(result).to.eql({javascript: 3, ruby: 2, python: 1});
   });

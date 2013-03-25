@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#any", function() {
+describe("List#any", function() {
   it("returns true when at least one condition is met", function() {
-    var result = list([1,2,3]).any(function(item){
+    var result = List([1,2,3]).any(function(item){
       return item % 2 == 0;
     });
 
@@ -12,7 +12,7 @@ describe("list#any", function() {
   });
 
   it("returns false when have no matches", function() {
-    var result = list([1,2,3]).any(function(item){
+    var result = List([1,2,3]).any(function(item){
       return item == 4;
     });
 
@@ -20,6 +20,6 @@ describe("list#any", function() {
   });
 
   it("defines alias", function() {
-    expect(list.fn.some).to.eql(list.fn.any);
+    expect(List.fn.some).to.eql(List.fn.any);
   });
 });

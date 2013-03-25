@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#select", function() {
+describe("List#select", function() {
   it("selects items based on criteria", function() {
-    var result = list([1,2,3,4]).select(function(number){
+    var result = List([1,2,3,4]).select(function(number){
       return number % 2 == 0;
     });
 

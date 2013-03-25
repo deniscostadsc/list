@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#groupsOf", function() {
+describe("List#groupsOf", function() {
   it("returns groups of 3", function() {
-    var result = list([1,2,3,4,5]).groupsOf(2);
+    var result = List([1,2,3,4,5]).groupsOf(2);
 
     expect(result.items[0].items).to.eql([1,2]);
     expect(result.items[1].items).to.eql([3,4]);
@@ -12,7 +12,7 @@ describe("list#groupsOf", function() {
   });
 
   it("returns groups with fill", function() {
-    var result = list([1,2,3,4]).groupsOf(3, "*");
+    var result = List([1,2,3,4]).groupsOf(3, "*");
 
     expect(result.items[0].items).to.eql([1,2,3]);
     expect(result.items[1].items).to.eql([4,"*","*"]);

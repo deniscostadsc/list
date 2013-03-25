@@ -1,10 +1,10 @@
 var expect = require("expect.js")
-  , list = require("../../list").list
+  , List = require("../../list").List
 ;
 
-describe("list#reduce", function() {
+describe("List#reduce", function() {
   it("handles optional buffer", function() {
-    var sum = list([1,2,3,4]).reduce(function(sum, number){
+    var sum = List([1,2,3,4]).reduce(function(sum, number){
       return sum + number;
     });
 
@@ -12,7 +12,7 @@ describe("list#reduce", function() {
   });
 
   it("handles initial buffer", function() {
-    var sum = list([1,2,3,4]).reduce(10, function(sum, number){
+    var sum = List([1,2,3,4]).reduce(10, function(sum, number){
       return sum + number;
     });
 
