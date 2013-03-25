@@ -18,7 +18,7 @@
       self = new List(items);
     }
 
-    self.items = items;
+    self.items = items instanceof List ? items.items : items;
     self.length = items.length;
 
     return self;

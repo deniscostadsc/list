@@ -15,7 +15,7 @@ var list = new List([1,2,3,4]);
       <span class="nx">self</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">List</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="nx">self</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">items</span><span class="p">;</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">items</span> <span class="k">instanceof</span> <span class="nx">List</span> <span class="o">?</span> <span class="nx">items</span><span class="p">.</span><span class="nx">items</span> <span class="o">:</span> <span class="nx">items</span><span class="p">;</span>
     <span class="nx">self</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
 
     <span class="k">return</span> <span class="nx">self</span><span class="p">;</span>
