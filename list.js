@@ -5,6 +5,11 @@
   //
   // The list.js library allows you to work os lists, with chainable functions.
   //
+  // You can initialize a new List with or without the `new` keyword.
+  //
+  //     var list = List([1,2,3,4]);
+  //     var list = new List([1,2,3,4]);
+  //
   function List(items) {
     var self = this;
     items = items || [];
