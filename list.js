@@ -26,6 +26,9 @@
 
   List.fn = List.prototype;
 
+  // Stop loops.
+  var stop = {};
+
   // Proxies the specified function to the target.
   var proxy = function(target, func, args) {
     return target[func].apply(target, args);
@@ -109,7 +112,17 @@
   // ------------------------------------------------------
   //
   List.fn.any = function(criteria) {
-    return this.select(criteria).length > 0;
+    var result = false;
+
+    this.each(function(item, index){
+      result = criteria(item, index);
+
+      if (result) {
+        return stop;
+      }
+    });
+
+    return !!result;
   };
 
   List.fn.some = List.fn.any;
@@ -218,6 +231,23 @@
     });
   };
 
+  // List#find
+  // ------------------------------------------------------
+  //
+  List.fn.find = function(criteria) {
+    var result;
+
+    this.any(function(item, index){
+      result = item;
+
+      if (criteria(item, index)) {
+        return stop;
+      }
+    });
+
+    return result;
+  };
+
   // List#reduce
   // ------------------------------------------------------
   //
@@ -241,8 +271,14 @@
   // ------------------------------------------------------
   //
   List.fn.each = function(iterator) {
+    var result;
+
     for (var index = 0; index < this.length; index++) {
-      iterator(this.items[index], index);
+      result = iterator(this.items[index], index);
+
+      if (result === stop) {
+        break;
+      }
     }
 
     return this;
