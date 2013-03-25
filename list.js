@@ -1,4 +1,5 @@
 ;(function(context){
+  "use strict";
   // list.js
   // ======================================================
   //
@@ -40,7 +41,7 @@
 
   // Map lists, returning the items.
   var mapLists = function(collection) {
-    return List(collection).map(function(item){
+    return new List(collection).map(function(item){
       return item instanceof List ? item.items : item;
     }).items;
   };
@@ -62,7 +63,7 @@
   // ------------------------------------------------------
   //
   List.fn.uniq = function(criteria) {
-    var seen = List();
+    var seen = new List();
 
     if (!criteria) {
       criteria = function(item) {
@@ -175,7 +176,7 @@
   //
   //
   List.fn.slice = function(index, ending) {
-    return List(this.items.slice(index, ending));
+    return new List(this.items.slice(index, ending));
   };
 
   // List#compact
@@ -204,7 +205,7 @@
   // ------------------------------------------------------
   //
   List.fn.select = function(criteria) {
-    return this.reduce(List(), function(buffer, item, index){
+    return this.reduce(new List(), function(buffer, item, index){
       if (criteria(item, index)) {
         buffer.push(item);
       }
@@ -256,7 +257,7 @@
       };
     }
 
-    return this.reduce(List(), function(buffer, item, index){
+    return this.reduce(new List(), function(buffer, item, index){
       buffer.push(iterator(item, index));
       return buffer;
     });
@@ -306,9 +307,9 @@
     var sortable;
 
     if (sorter === undefined) {
-      return List(this.items.sort());
+      return new List(this.items.sort());
     } else if (typeof(sorter) == "function") {
-      return List(this.items.sort(sorter));
+      return new List(this.items.sort(sorter));
     }
 
     sortable = this.map(function(item, index){
@@ -324,7 +325,7 @@
   // ------------------------------------------------------
   //
   List.fn.reverse = function() {
-    return this.reduce(List(), function(buffer, item){
+    return this.reduce(new List(), function(buffer, item){
       buffer.unshift(item);
       return buffer;
     });
@@ -346,7 +347,7 @@
 
     return this.reduce({}, function(buffer, item, index){
       var key = criteria(item, index);
-      buffer[key] = buffer[key] || List();
+      buffer[key] = buffer[key] || new List();
       buffer[key].push(item);
 
       return buffer;
@@ -358,13 +359,13 @@
   //
   List.fn.groupsOf = function(number, fill) {
     var index = 0
-      , result = List()
+      , result = new List()
       , fillItems = []
       , slice
     ;
 
     if (fill !== undefined) {
-      fillItems = List().fill(number, fill);
+      fillItems = new List().fill(number, fill);
     }
 
     while (index < this.length) {
@@ -380,7 +381,7 @@
   // ------------------------------------------------------
   //
   List.fn.fill = function(number, fill) {
-    return List(Array(number)).map(function(){
+    return new List(new Array(number)).map(function(){
       return fill;
     });
   };
