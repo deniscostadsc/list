@@ -25,6 +25,8 @@
   }
 
   List.fn = List.prototype;
+  List.fn.length = 0;
+  List.fn.items = [];
 
   // Stop loops.
   var stop = {};
