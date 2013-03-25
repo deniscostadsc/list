@@ -419,4 +419,4 @@
 
   // Expose the list function to the world!
   context.list = list;
-})(typeof(exports) === undefined ? this : exports);
+})(typeof(exports) === "undefined" ? this : exports);
