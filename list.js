@@ -1,4 +1,4 @@
-(function(context){
+;(function(context){
   // list.js
   // ======================================================
   //
@@ -383,6 +383,38 @@
     return list(Array(number)).map(function(){
       return fill;
     });
+  };
+
+  // list#shuffle
+  // ------------------------------------------------------
+  //
+  // Shuffle the array using the [Fisher-Yates](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle#The_modern_algorithm) algorithm.
+  //
+  list.fn.shuffle = function() {
+    var index, temp;
+    var shuffle = this.slice();
+
+    for (var i = shuffle.length - 1; i > 0; i--) {
+      index = Math.floor(Math.random() * (i + 1));
+      temp = shuffle.items[i];
+      shuffle.items[i] = shuffle.items[index];
+      shuffle.items[index] = temp;
+    }
+
+    return shuffle;
+  };
+
+  // list#sample
+  // ------------------------------------------------------
+  //
+  list.fn.sample = function(quantity) {
+    var shuffle = this.shuffle();
+
+    if (!quantity) {
+      return shuffle.first();
+    } else {
+      return shuffle.first(quantity);
+    }
   };
 
   // Expose the list function to the world!
