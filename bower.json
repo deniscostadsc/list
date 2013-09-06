@@ -1,0 +1,6 @@
+{
+  "name": "list",
+  "version": "0.1.0",
+  "main": ["./list.js", "./list.min.js", "README.md"],
+  "ignore": []
+}
